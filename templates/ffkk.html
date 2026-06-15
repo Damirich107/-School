@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шагавиев Халил</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='kkff.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- СТИЛЬ ДЛЯ КНОПКИ ТЕМЫ -->
+    <style>
+        #themeToggle {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #716e6e;
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 1000;
+            font-size: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        #themeToggle:hover {
+            background: #f97316;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- БЛОК ПОЛЬЗОВАТЕЛЯ -->
+    <div class="user-bar" style="text-align: right; padding: 10px 20px; background: #f0f2f5; border-bottom: 1px solid #eee;">
+        {% if session.username %}
+            <a href="/profile" style="color: #716e6e; font-weight: bold;">{{ session.username }}</a> |
+            <a href="/logout" style="color: #716e6e; font-weight: bold;">Выйти</a>
+        {% else %}
+            <a href="/login" style="color: #716e6e; font-weight: bold;">Войти</a>
+        {% endif %}
+    </div>
+
+    <!-- ШАПКА САЙТА -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="static/images/logo.png" alt="School" class="logo-img">
+                <h1>School</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#courses">Курсы</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#reviews">Отзывы</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                    <li><a href="/feedback">Обратная связь</a></li>
+                    <li><a href="/profile">Мой профиль</a></li>
+                    <li><a href="/my_applications">Мои заявки</a></li>
+                </ul>
+            </nav>
+            <a href="#contact" class="btn">Начать учиться</a>
+            {% if session.username %}
+    <a href="/logout" class="btn" id="authBtn">Выйти</a>
+{% else %}
+    <a href="/login" class="btn" id="authBtn">Войти</a>
+{% endif %}
+        </div>
+
+    </header>
+
+    <!-- ГЛАВНЫЙ БАННЕР -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                {% if session.username %}
+                    <div>
+                        <h2>Добро пожаловать, {{ session.username }}!</h2>
+                        <p>Рады снова видеть вас в School!</p>
+                    </div>
+                {% endif %}
+                <h2>Стань востребованным программистом</h2>
+                <p>Онлайн-курсы для начинающих и опытных разработчиков с гарантией трудоустройства</p>
+                <a href="#courses" class="btn btn-large">Выбрать курс</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- РАЗДЕЛ С КУРСАМИ -->
+    <section id="courses" class="courses">
+        <div class="container">
+            <h2>Наши курсы</h2>
+            <div class="course-grid">
+                <div class="course-card">
+                    <div class="course-icon"><i class="fas fa-code"></i></div>
+                    <h3>Веб-разработка</h3>
+                    <p>Изучите HTML, CSS, JavaScript и создавайте современные веб-сайты</p>
+                    <div class="course-details">
+                        <span class="price">15 000 руб.</span>
+                        <span class="duration"><i class="far fa-clock"></i> 3 месяца</span>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-icon"><i class="fab fa-python"></i></div>
+                    <h3>Python для начинающих</h3>
+                    <p>Освойте один из самых популярных языков программирования</p>
+                    <div class="course-details">
+                        <span class="price">12 000 руб.</span>
+                        <span class="duration"><i class="far fa-clock"></i> 2.5 месяца</span>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-icon"><i class="fab fa-java"></i></div>
+                    <h3>Java-разработка</h3>
+                    <p>Научитесь создавать приложения на языке Java</p>
+                    <div class="course-details">
+                        <span class="price">18 000 руб.</span>
+                        <span class="duration"><i class="far fa-clock"></i> 4 месяца</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- РАЗДЕЛ О НАС -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Почему выбирают нас</h2>
+            <div class="features">
+                <div class="feature">
+                    <img src="static/images/skills.png" alt="Практические навыки">
+                    <h3>Практические навыки</h3>
+                    <p>Наши курсы ориентированы на реальные проекты и задачи</p>
+                </div>
+                <div class="feature">
+                    <img src="static/images/support.png" alt="Поддержка 24/7">
+                    <h3>Поддержка 24/7</h3>
+                    <p>Преподаватели и менторы всегда готовы помочь</p>
+                </div>
+                <div class="feature">
+                    <img src="static/images/job.png" alt="Трудоустройство">
+                    <h3>Трудоустройство</h3>
+                    <p>Помогаем с составлением резюме и поиском работы</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- РАЗДЕЛ ОТЗЫВЫ -->
+    <section id="reviews" class="reviews">
+        <div class="container">
+            <h2>Отзывы наших студентов</h2>
+            <div class="review-grid">
+                <div class="review-card">
+                    <div class="reviewer-info">
+                        <img src="static/images/review1.jpg">
+                        <div>
+                            <h4>Уолтер Уайт</h4>
+                            <span class="reviewer-role">Веб-разработчик</span>
+                        </div>
+                    </div>
+                    <p>"Отличная школа! После курса по веб-разработке нашел работу через пару месяцев."</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="reviewer-info">
+                        <img src="static/images/review2.jpg" alt="Никита">
+                        <div>
+                            <h4>Никита</h4>
+                            <span class="reviewer-role">Python-разработчик</span>
+                        </div>
+                    </div>
+                    <p>"Преподаватели очень внимательные, материал подается понятно и структурированно."</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="reviewer-info">
+                        <img src="static/images/review3.jpg" alt="Иван">
+                        <div>
+                            <h4>Иван</h4>
+                            <span class="reviewer-role">Java-разработчик</span>
+                        </div>
+                    </div>
+                    <p>"Курс по Java превзошел мои ожидания. Много практики и полезных материалов."</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- РАЗДЕЛ КОНТАКТОВ -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Начните обучение сегодня</h2>
+                    <p>Присоединяйтесь к более чем 2000 студентов, которые уже начали карьеру в IT</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+7 (960) 084-45-67</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>school@mail.ru</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Казань, ул. Пушкина, 67</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" aria-label="ВКонтакте"><i class="fab fa-vk"></i></a>
+                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="applicationForm">
+    <h3>Оставить заявку</h3>
+    <input type="text" id="appName" placeholder="Ваше имя" required>
+    <input type="email" id="appEmail" placeholder="Ваш email" required>
+    <input type="text" id="appPhone" placeholder="Ваш телефон" required>
+    <select id="appCourse" required>
+        <option value="" disabled selected>Выберите курс</option>
+        <option value="web">Веб-разработка</option>
+        <option value="python">Python для начинающих</option>
+        <option value="java">Java-разработка</option>
+        <option value="mobile">Мобильная разработка</option>
+    </select>
+    <button type="submit" class="btn" id="submitApplication">Отправить заявку</button>
+</form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПОДВАЛ -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="static/images/logo.png" alt="School" class="logo-img">
+                    <h3>School</h3>
+                    <p>Онлайн-школа программирования</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Быстрые ссылки</h4>
+                    <ul>
+                        <li><a href="#courses">Курсы</a></li>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#reviews">Отзывы</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-courses">
+                    <h4>Курсы</h4>
+                    <ul>
+                        <li><a href="#courses">Веб-разработка</a></li>
+                        <li><a href="#courses">Python</a></li>
+                        <li><a href="#courses">Java</a></li>
+                        <li><a href="#courses">Мобильная разработка</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025. Все права защищены.</p>
+                {% if session.visit_count %}
+                    <p>Вы посетили сайт {{ session.visit_count }} раз(а)</p>
+                {% endif %}
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+<button id="themeToggle"><i class="fas fa-moon"></i></button>
+</body>
+</html>

@@ -1,0 +1,61 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+instance/
+
+# Flask
+.env
+.flaskenv
+.idea/
+
+# IDE
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+*.pid
+
+# Secrets and keys
+config.py
+secret_key.py
+*.key
+*.pem
+
+# Uploads
+uploads/
+static/uploads/
+
+# Backup files
+*.backup
+*.bak
+*.old
+
+# OS files
+Thumbs.db
+desktop.ini
+
+# Project specific
+users.json
+
+.env
+.env.local
+.env.*.local

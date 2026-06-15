@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Заявка #{{ application.id }}{% endblock %}
+
+{% block content %}
+<div class="application-detail-container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+        <h1>Заявка #{{ application.id }}</h1>
+        <div class="application-actions">
+    <a href="/admin/applications" class="btn btn-back">← Назад к списку</a>
+    <a href="/admin/application/{{ application.id }}/edit" class="btn btn-edit-application">Редактировать</a>
+</div>
+    </div>
+
+    <div class="application-info-card">
+        <h2>Информация о клиенте</h2>
+        <div class="info-row">
+            <strong class="info-label">Имя:</strong>
+            <span class="info-value">{{ application.name }}</span>
+        </div>
+        <div class="info-row">
+            <strong class="info-label">Email:</strong>
+            <span class="info-value">{{ application.email }}</span>
+        </div>
+        <div class="info-row">
+            <strong class="info-label">Телефон:</strong>
+            <span class="info-value">{{ application.phone }}</span>
+        </div>
+
+        <h2 style="margin-top: 30px;">Информация о заявке</h2>
+        <div class="info-row">
+            <strong class="info-label">Курс:</strong>
+            <span class="info-value">{{ application.course }}</span>
+        </div>
+        <div class="info-row">
+            <strong class="info-label">Статус:</strong>
+            <span class="info-value">
+                {% if application.status == 'new' %}
+                    <span class="status-badge status-new">Новая</span>
+                {% elif application.status == 'in_progress' %}
+                    <span class="status-badge status-in_progress">В обработке</span>
+                {% elif application.status == 'completed' %}
+                    <span class="status-badge status-completed">Завершена</span>
+                {% elif application.status == 'rejected' %}
+                    <span class="status-badge status-rejected">Отклонена</span>
+                {% else %}
+                    {{ application.status }}
+                {% endif %}
+            </span>
+        </div>
+        <div class="info-row">
+            <strong class="info-label">Дата создания:</strong>
+            <span class="info-value">{{ application.created_at.strftime('%d.%m.%Y %H:%M') }}</span>
+        </div>
+
+        {% if application.user_id %}
+        <h2 style="margin-top: 30px;">Связанный пользователь</h2>
+        <div class="info-row">
+            <strong class="info-label">ID пользователя:</strong>
+            <span class="info-value">{{ application.user_id }}</span>
+        </div>
+        <div class="info-row">
+            <strong class="info-label">Привязан к аккаунту:</strong>
+            <span class="info-value">Да</span>
+        </div>
+        {% endif %}
+    </div>
+
+    <div style="margin-top: 30px; text-align: right;">
+        <form method="POST" action="/admin/application/{{ application.id }}/delete" style="display: inline;">
+            <button type="submit" class="btn-delete" onclick="return confirm('Вы уверены, что хотите удалить эту заявку?');">
+                🗑 Удалить заявку
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+<div style="max-width: 400px; margin: 50px auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+    <h2 style="text-align: center; margin-bottom: 25px; color: #333;"> Вход на сайт</h2>
+
+    {% if error %}
+    <div style="background: #ffe6e6; color: #e74c3c; padding: 12px; border-radius: 8px; margin-bottom: 20px; border-left: 3px solid #e74c3c;">
+        {{ error }}
+    </div>
+    {% endif %}
+
+    <form method="POST" action="/login">
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;"> Имя пользователя:</label>
+            <input type="text" name="username" required
+                   placeholder="Введите ваше имя"
+                   style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 16px;">
+        </div>
+
+        <div style="margin-bottom: 25px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;"> Пароль:</label>
+            <input type="password" name="password" required
+                   placeholder="Введите пароль"
+                   style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 16px;">
+        </div>
+
+        <button type="submit" class="btn" style="width: 100%; background: #716e6e; border: none; padding: 14px; font-size: 16px; font-weight: 600; cursor: pointer;">
+             Войти
+        </button>
+    </form>
+
+    <!-- Ссылка на восстановление пароля -->
+    <p style="text-align: center; margin-top: 20px;">
+        <a href="/forgot_password" style="color: #f97316; text-decoration: none;"> Забыли пароль?</a>
+    </p>
+
+    <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;">
+        <p style="color: #666;">Нет аккаунта? <a href="/register" style="color: #f97316; font-weight: bold; text-decoration: none;"> Зарегистрироваться</a></p>
+    </div>
+</div>
+
+<style>
+    input:focus {
+        outline: none;
+        border-color: #f97316 !important;
+        box-shadow: 0 0 5px rgba(249, 115, 22, 0.3);
+    }
+</style>
+{% endblock %}

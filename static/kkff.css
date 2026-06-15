@@ -1,0 +1,1751 @@
+/* ОБЩИЕ СТИЛИ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Контейнер для центрирования контента */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* КНОПКИ */
+
+.btn {
+    display: inline-block;
+    background: #716e6e;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+/* Эффект при наведении на кнопку */
+.btn:hover {
+    background: #f97316;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-large {
+    padding: 15px 35px;
+    font-size: 1.1rem;
+}
+
+/* ШАПКА САЙТА (HEADER) */
+
+header {
+    background: white;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Flex-контейнер для элементов шапки */
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+/* Стили для логотипа */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+}
+
+.logo h1 {
+    color: #756f6f;
+    font-size: 1.5rem;
+}
+
+/* Навигационное меню */
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #f97316;
+}
+
+/* ГЛАВНЫЙ БАННЕР */
+
+.hero {
+    background: linear-gradient(135deg, #75767b 0%, #aba9af 100%);
+    color: white;
+    padding: 150px 0 80px;
+    overflow: hidden;
+}
+
+/* Flex-контейнер для баннера */
+.hero .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero h2 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.hero-image {
+    flex: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+.hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.hero-image:hover img {
+    transform: scale(1.05);
+}
+
+/* РАЗДЕЛ С КУРСАМИ */
+
+.courses {
+    padding: 80px 0;
+    background: #f8f9ff;
+}
+
+.courses h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.2rem;
+    color: #333;
+}
+
+/* CSS Grid для карточек курсов */
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* Стили карточки курса */
+.course-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.course-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+/* Круглая иконка для курса */
+.course-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(74, 108, 247, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.course-icon i {
+    font-size: 30px;
+    color: #716e6e;
+}
+
+.course-card h3 {
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 1.4rem;
+}
+
+.course-card p {
+    margin-bottom: 20px;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Контейнер для цены и длительности */
+.course-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.price {
+    font-weight: bold;
+    color: #716e6e;
+    font-size: 1.3rem;
+}
+
+.duration {
+    color: #666;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* РАЗДЕЛ "О НАС" */
+
+.about {
+    padding: 80px 0;
+}
+
+.about h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.2rem;
+    color: #333;
+}
+
+/* Сетка для преимуществ */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.feature {
+    text-align: center;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+}
+
+.feature img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+    object-fit: contain; /* Сохраняет пропорции изображения */
+}
+
+.feature h3 {
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 1.3rem;
+}
+
+.feature p {
+    color: #666;
+    line-height: 1.5;
+}
+
+/* РАЗДЕЛ С ОТЗЫВАМИ */
+
+.reviews {
+    padding: 80px 0;
+    background: #f8f9ff;
+}
+
+.reviews h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.2rem;
+    color: #333;
+}
+
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.review-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* Информация о студенте */
+.reviewer-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+.reviewer-info img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover; /* Обрезка изображения по кругу */
+    border: 3px solid #716e6e;
+}
+
+.reviewer-info h4 {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.reviewer-role {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.review-card p {
+    font-style: italic;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Звездный рейтинг */
+.stars {
+    color: #ffdd00;
+    font-size: 1.1rem;
+}
+
+/* ГАЛЕРЕЯ ПРОЕКТОВ */
+
+.gallery {
+    padding: 80px 0;
+}
+
+.gallery h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.2rem;
+    color: #333;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.gallery-item {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    position: relative; /* Для позиционирования подписи */
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover; /* Обрезка изображения */
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05); /* Легкое увеличение при наведении */
+}
+
+/* Подпись к изображению */
+.gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(120, 121, 124, 0.9);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* РАЗДЕЛ КОНТАКТОВ */
+
+.contact {
+    padding: 80px 0;
+    background: linear-gradient(135deg,  #75767b 0%, #aba9af 100%);
+    color: white;
+}
+
+/* Flex-контейнер для контактов и формы */
+.contact-content {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start; /* Выравнивание по верху */
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.contact-info h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    margin-bottom: 30px;
+    opacity: 0.9;
+    font-size: 1.1rem;
+}
+
+.contact-details {
+    margin-bottom: 30px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 15px;
+}
+
+.contact-item i {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Социальные сети */
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    color: white;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: white;
+    color: #756f6f;
+    transform: translateY(-3px);
+}
+
+/* Форма обратной связи */
+.contact-form {
+    flex: 1;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.contact-form h3 {
+    color: #333;
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.contact-form input,
+.contact-form select {  
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+/* Эффект фокуса для полей ввода */
+.contact-form input:focus,
+.contact-form select:focus {
+    outline: none;
+    border-color: #756f6f;
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 16px;
+    font-size: 1.1rem;
+}
+
+/* ПОДВАЛ САЙТА (FOOTER) */
+
+footer {
+    background: #2b2b4b;
+    color: white;
+    padding: 60px 0 20px;
+}
+
+/* Сетка для колонок в футере */
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-logo img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+.footer-logo h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.footer-logo p {
+    opacity: 0.7;
+    line-height: 1.5;
+}
+
+.footer-links h4,
+.footer-courses h4 {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.footer-links ul,
+.footer-courses ul {
+    list-style: none;
+}
+
+.footer-links li,
+.footer-courses li {
+    margin-bottom: 10px;
+}
+
+.footer-links a,
+.footer-courses a {
+    color: #bbb;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover,
+.footer-courses a:hover {
+    color: #756f6f;
+}
+
+/* Нижняя часть футера */
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: #bbb;
+}
+
+/* АДАПТИВНОСТЬ */
+
+@media (max-width: 992px) {
+    .hero .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-content {
+        order: 1;
+    }
+    
+    .hero-image {
+        order: 2;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .contact-content {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    nav ul li {
+        margin: 0;
+    }
+
+    .hero {
+        padding: 120px 0 60px;
+    }
+    
+    .hero h2 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .course-grid,
+    .features,
+    .review-grid,
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .courses,
+    .about,
+    .reviews,
+    .gallery,
+    .contact {
+        padding: 60px 0;
+    }
+
+    h2 {
+        font-size: 1.8rem !important;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .footer-logo {
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h2 {
+        font-size: 1.6rem;
+    }
+    
+    .btn-large {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+
+    .course-card,
+    .review-card,
+    .contact-form {
+        padding: 20px;
+    }
+    
+    .contact-form {
+        padding: 25px;
+    }
+}
+/* ========== СТИЛИ ДЛЯ СТРАНИЦ ПРОФИЛЯ И РЕДАКТИРОВАНИЯ ========== */
+
+/* Контейнеры страниц */
+.profile-page,
+.edit-profile-page {
+    max-width: 800px;
+    margin: 100px auto 50px;
+    padding: 0 20px;
+}
+
+/* Контейнер формы */
+.form-container {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.form-container h2 {
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Группы полей формы */
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #716e6e;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    color: #666;
+    font-size: 0.85rem;
+}
+
+/* Кнопки действий */
+.form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn-save {
+    background: #95a5a6;  /* Было: #667eea (синий), стало: серый */
+    flex: 1;
+}
+.btn-save:hover {
+    background: #7f8c8d;  /* Было: #5568d3, стало: более тёмный серый */
+}
+
+.btn-cancel {
+    background: #95a5a6;
+    flex: 1;
+}
+
+.btn-cancel:hover {
+    background: #7f8c8d;
+}
+
+/* Профиль - заголовок */
+.profile-header {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.profile-header h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.profile-header p {
+    color: #666;
+}
+
+/* Инфо-блок */
+.profile-info-box {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.profile-info-box h3 {
+    color: #333;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.info-row {
+    display: flex;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-row strong {
+    min-width: 150px;
+    color: #716e6e;
+    font-weight: 600;
+}
+
+.info-row span {
+    color: #333;
+}
+
+/* Статус аккаунта */
+.profile-status-box {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.profile-status-box h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.status-badge.active {
+    background: #d4edda;
+    color: #155724;
+}
+
+/* Кнопки профиля */
+.profile-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.profile-actions .btn {
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+}
+
+.btn-edit {
+    background: #716e6e;  /* Было: #667eea (синий), стало: серый */
+}
+.btn-edit:hover {
+    background: #716e6e;  /* Было: #5568d3 */
+}
+.btn-secret {
+    background: #716e6e;  /* Было: #f39c12 (оранжевый), стало: серый */
+}
+.btn-secret:hover {
+    background: #716e6e;  /* Было: #e67e22 */
+}
+.btn-logout {
+    background: #716e6e;  /* Было: #e74c3c (красный), стало: серый */
+}
+.btn-logout:hover {
+    background: #716e6e;  /* Было: #c0392b */
+}
+/* ========== СТРАНИЦА "МОИ ЗАЯВКИ" ========== */
+.applications-page {
+    max-width: 900px;
+    margin: 120px auto 50px;
+    padding: 0 20px;
+}
+
+/* Карточка заголовка */
+.page-header-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.page-header-card h1 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.page-header-card p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* Карточка с таблицей */
+.applications-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.applications-card h2 {
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.divider {
+    height: 2px;
+    background: #f0f0f0;
+    margin-bottom: 25px;
+}
+
+/* Сообщение загрузки */
+.loading-message {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f0f0f0;
+    border-top-color: #716e6e;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 15px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Пустое состояние */
+.empty-message {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+}
+
+.empty-message p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+/* Таблица заявок */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.applications-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.applications-table thead tr {
+    background: #f5f6fa;
+}
+
+.applications-table th {
+    padding: 14px 16px;
+    text-align: left;
+    color: #333;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.applications-table td {
+    padding: 14px 16px;
+    color: #333;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.95rem;
+}
+
+.applications-table tbody tr:hover {
+    background: #f9f9f9;
+}
+
+/* Бейдж статуса */
+.status-badge-app {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status-badge-app.new {
+    background: #3498db;
+    color: white;
+}
+
+.status-badge-app.processing {
+    background: #f39c12;
+    color: white;
+}
+
+.status-badge-app.completed {
+    background: #27ae60;
+    color: white;
+}
+
+.status-badge-app.rejected {
+    background: #e74c3c;
+    color: white;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .applications-page {
+        margin-top: 100px;
+    }
+
+    .page-header-card h1 {
+        font-size: 1.5rem;
+    }
+
+    .applications-table th,
+    .applications-table td {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+    }
+}
+/* ==========   ТЁМНАЯ ТЕМА ДЛЯ ПРОФИЛЯ И РЕДАКТИРОВАНИЯ ========== */
+
+body.dark-theme .form-container,
+body.dark-theme .profile-header,
+body.dark-theme .profile-info-box,
+body.dark-theme .profile-status-box {
+    background: #1e293b !important;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3) !important;
+}
+
+body.dark-theme .form-container h2,
+body.dark-theme .profile-header h2,
+body.dark-theme .profile-info-box h3,
+body.dark-theme .profile-status-box h3 {
+    color: #f8fafc !important;
+}
+
+body.dark-theme .form-group label {
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .form-group input,
+body.dark-theme .form-group textarea {
+    background: #334155 !important;
+    border-color: #475569 !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .form-group input:focus,
+body.dark-theme .form-group textarea:focus {
+    border-color: #f97316 !important;
+}
+
+body.dark-theme .form-group small {
+    color: #94a3b8 !important;
+}
+
+body.dark-theme .profile-header p {
+    color: #94a3b8 !important;
+}
+
+body.dark-theme .info-row strong {
+    color: #f97316 !important;
+}
+
+body.dark-theme .info-row span {
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .info-row {
+    border-bottom-color: #334155 !important;
+}
+
+body.dark-theme .profile-info-box h3 {
+    border-bottom-color: #334155 !important;
+}
+
+body.dark-theme .status-badge.active {
+    background: #064e3b !important;
+    color: #34d399 !important;
+}
+
+body.dark-theme .btn-save {
+    background: #f97316 !important;
+}
+body.dark-theme .btn-save:hover {
+    background: #ea580c !important;
+}
+body.dark-theme .btn-cancel {
+    background: #f97316 !important;
+}
+body.dark-theme .btn-cancel:hover {
+    background: #ea580c !important;
+}
+
+body.dark-theme .btn-edit {
+    background: #f97316 !important;  /* Было: #6366f1 (синий), стало: оранжевый */
+}
+body.dark-theme .btn-edit:hover {
+    background: #ea580c !important;  /* Было: #4f46e5 */
+}
+body.dark-theme .btn-secret {
+    background: #f97316 !important;  /* Оставляем оранжевый */
+}
+body.dark-theme .btn-secret:hover {
+    background: #ea580c !important;  /* Было: #d97706 */
+}
+body.dark-theme .btn-logout {
+    background: #f97316 !important;  /* Было: #ef4444 (красный), стало: оранжевый */
+}
+body.dark-theme .btn-logout:hover {
+    background: #ea580c !important;  /* Было: #dc2626 */
+}
+/* ========== ТЁМНАЯ ТЕМА ДЛЯ СТРАНИЦЫ "МОИ ЗАЯВКИ" ========== */
+body.dark-theme .page-header-card,
+body.dark-theme .applications-card {
+    background: #1e293b !important;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3) !important;
+}
+
+body.dark-theme .page-header-card h1 {
+    color: #f8fafc !important;
+}
+
+body.dark-theme .page-header-card p {
+    color: #94a3b8 !important;
+}
+
+body.dark-theme .applications-card h2 {
+    color: #f8fafc !important;
+}
+
+body.dark-theme .divider {
+    background: #334155 !important;
+}
+
+body.dark-theme .loading-message {
+    color: #94a3b8 !important;
+}
+
+body.dark-theme .spinner {
+    border-color: #334155 !important;
+    border-top-color: #f97316 !important;
+}
+
+body.dark-theme .empty-message {
+    color: #94a3b8 !important;
+}
+
+body.dark-theme .empty-message p {
+    color: #cbd5e1 !important;
+}
+
+/* Таблица заявок - ИСПРАВЛЕННЫЕ СТИЛИ */
+body.dark-theme .applications-table {
+    background: #1e293b !important;
+}
+
+body.dark-theme .applications-table thead tr {
+    background: #334155 !important;
+}
+
+body.dark-theme .applications-table th {
+    color: #f8fafc !important;
+    border-bottom-color: #475569 !important;
+    font-weight: 600 !important;
+}
+
+body.dark-theme .applications-table td {
+    color: #e2e8f0 !important;
+    border-bottom-color: #334155 !important;
+    opacity: 1 !important;  /* Убираем прозрачность */
+}
+
+body.dark-theme .applications-table tbody tr {
+    opacity: 1 !important;  /* ВАЖНО: убираем прозрачность строк */
+    background: #1e293b !important;
+}
+
+body.dark-theme .applications-table tbody tr:hover {
+    background: #273549 !important;
+}
+
+body.dark-theme .applications-table tbody tr:nth-child(even) {
+    background: #253347 !important;  /* Чередование строк для лучшей читаемости */
+}
+
+body.dark-theme .applications-table tbody tr:nth-child(even):hover {
+    background: #2d3d54 !important;
+}
+
+/* Бейджи статусов в тёмной теме */
+body.dark-theme .status-badge-app.new {
+    background: #3b82f6 !important;
+    color: white !important;
+}
+
+body.dark-theme .status-badge-app.processing {
+    background: #f59e0b !important;
+    color: white !important;
+}
+
+body.dark-theme .status-badge-app.completed {
+    background: #10b981 !important;
+    color: white !important;
+}
+
+body.dark-theme .status-badge-app.rejected {
+    background: #ef4444 !important;
+    color: white !important;
+}
+/* Кнопка удаления заявки */
+.btn-delete-app {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-delete-app:hover {
+    background: #dc2626;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.btn-delete-app:active {
+    transform: translateY(0);
+}
+
+/* Тёмная тема для кнопки удаления */
+body.dark-theme .btn-delete-app {
+    background: #ef4444 !important;
+    color: white !important;
+}
+
+body.dark-theme .btn-delete-app:hover {
+    background: #dc2626 !important;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4) !important;
+}
+/* Добавьте в конец файла static/kkff.css */
+
+/* Статусы заявок */
+.status-new { background: #ff9800; color: white; }
+.status-in_progress { background: #2196f3; color: white; }
+.status-completed { background: #4caf50; color: white; }
+.status-rejected { background: #f44336; color: white; }
+
+/* Админ-панель */
+.admin-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.admin-table {
+    width: 100%;
+    background: white;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.admin-table th {
+    background: #f5f5f5;
+    font-weight: bold;
+}
+/* ========== АДМИН-ПАНЕЛЬ ========== */
+.admin-container {
+    max-width: 1200px;
+    margin: 120px auto 50px;
+    padding: 0 20px;
+}
+
+.admin-container h1 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.admin-welcome {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+}
+
+/* Карточки статистики */
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #f97316;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* Карточки действий */
+.admin-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.action-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.action-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.action-card h3 {
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.action-card p {
+    color: #666;
+}
+
+/* Блок последних заявок */
+.admin-recent {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.admin-recent h2 {
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+/* Таблица админ-панели */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.admin-table thead {
+    background: #f5f6fa;
+}
+
+.admin-table thead tr {
+    background: #f5f6fa !important;
+}
+
+.admin-table th {
+    padding: 14px 16px;
+    text-align: left;
+    color: #333 !important;
+    font-weight: 600;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.admin-table td {
+    padding: 14px 16px;
+    color: #333;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.admin-table tbody tr {
+    background: white;
+}
+
+.admin-table tbody tr:hover {
+    background: #f9f9f9;
+}
+
+.admin-table a {
+    color: #f97316;
+    text-decoration: none;
+}
+
+.admin-table a:hover {
+    text-decoration: underline;
+}
+
+.no-data {
+    text-align: center;
+    color: #666;
+    padding: 40px;
+}
+
+/* Бейджи статусов */
+.status-badge {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status-new {
+    background: #3b82f6;
+    color: white;
+}
+
+.status-in_progress {
+    background: #f59e0b;
+    color: white;
+}
+
+.status-completed {
+    background: #10b981;
+    color: white;
+}
+
+.status-rejected {
+    background: #ef4444;
+    color: white;
+}
+
+/* ========== ТЁМНАЯ ТЕМА ДЛЯ АДМИН-ПАНЕЛИ ========== */
+body.dark-theme .admin-container h1,
+body.dark-theme .admin-welcome {
+    color: #f8fafc !important;
+}
+
+body.dark-theme .stat-card,
+body.dark-theme .action-card,
+body.dark-theme .admin-recent {
+    background: #1e293b !important;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3) !important;
+}
+
+body.dark-theme .stat-label,
+body.dark-theme .action-card p {
+    color: #94a3b8 !important;
+}
+
+body.dark-theme .action-card h3,
+body.dark-theme .admin-recent h2 {
+    color: #f8fafc !important;
+}
+
+/* ТАБЛИЦА В ТЁМНОЙ ТЕМЕ - ИСПРАВЛЕННАЯ */
+body.dark-theme .admin-table {
+    background: #1e293b !important;
+}
+
+body.dark-theme .admin-table thead {
+    background: #334155 !important;
+}
+
+body.dark-theme .admin-table thead tr {
+    background: #334155 !important;
+}
+
+body.dark-theme .admin-table th {
+    color: #f8fafc !important;
+    background: #334155 !important;
+    border-bottom-color: #475569 !important;
+}
+
+body.dark-theme .admin-table td {
+    color: #e2e8f0 !important;
+    border-bottom-color: #334155 !important;
+}
+
+body.dark-theme .admin-table tbody tr {
+    background: #1e293b !important;
+}
+
+body.dark-theme .admin-table tbody tr:hover {
+    background: #273549 !important;
+}
+
+body.dark-theme .admin-table tbody tr:nth-child(even) {
+    background: #253347 !important;
+}
+
+body.dark-theme .no-data {
+    color: #94a3b8 !important;
+}
+/* ========== СТРАНИЦА ПРОСМОТРА ЗАЯВКИ (ADMIN APPLICATION DETAIL) ========== */
+
+/* Основной контейнер страницы */
+.application-detail-page,
+.application-detail-container {
+    max-width: 900px;
+    margin: 120px auto 50px;
+    padding: 0 20px;
+}
+
+/* Заголовок страницы */
+.application-detail-page h1,
+.application-detail-container h1 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Кнопки действий (Назад, Редактировать) */
+.application-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.application-actions .btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+/* Карточка с информацией */
+.application-info-card {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* Заголовки секций внутри карточки */
+.application-info-card h2,
+.application-info-card h3 {
+    color: #333;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+/* Строки с информацией */
+.application-info-card .info-row,
+.application-info-row {
+    display: flex;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+    align-items: center;
+}
+
+.application-info-card .info-row:last-child,
+.application-info-row:last-child {
+    border-bottom: none;
+}
+
+/* Метки (Имя, Email, Телефон...) */
+.application-info-card .info-label,
+.application-info-card strong,
+.info-label {
+    min-width: 180px;
+    color: #666;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* Значения полей */
+.application-info-card .info-value,
+.info-value {
+    color: #333;
+    font-size: 1rem;
+    flex: 1;
+}
+
+/* Бейдж статуса */
+.application-info-card .status-badge,
+.status-badge-app {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Кнопка удаления заявки */
+.btn-delete {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.btn-delete:hover {
+    background: #dc2626;
+    transform: translateY(-2px);
+}
+
+/* ========== ТЁМНАЯ ТЕМА ДЛЯ СТРАНИЦЫ ПРОСМОТРА ЗАЯВКИ ========== */
+
+body.dark-theme .application-detail-page h1,
+body.dark-theme .application-detail-container h1 {
+    color: #f8fafc !important;
+}
+
+body.dark-theme .application-info-card {
+    background: #1e293b !important;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3) !important;
+}
+
+body.dark-theme .application-info-card h2,
+body.dark-theme .application-info-card h3 {
+    color: #f8fafc !important;
+    border-bottom-color: #334155 !important;
+}
+
+body.dark-theme .application-info-card .info-row,
+body.dark-theme .application-info-row {
+    border-bottom-color: #334155 !important;
+}
+
+body.dark-theme .application-info-card .info-label,
+body.dark-theme .application-info-card strong,
+body.dark-theme .info-label {
+    color: #94a3b8 !important;
+}
+
+body.dark-theme .application-info-card .info-value,
+body.dark-theme .info-value {
+    color: #e2e8f0 !important;
+}
+
+/* Кнопки в тёмной теме */
+body.dark-theme .application-actions .btn {
+    background: #334155 !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-theme .application-actions .btn:hover {
+    background: #475569 !important;
+    transform: translateY(-2px);
+}
+
+/* Кнопка "Редактировать" — выделяем цветом */
+body.dark-theme .application-actions .btn-primary,
+body.dark-theme .btn-edit-application {
+    background: #f97316 !important;
+    color: white !important;
+}
+
+body.dark-theme .application-actions .btn-primary:hover,
+body.dark-theme .btn-edit-application:hover {
+    background: #ea580c !important;
+}
+
+/* Кнопка удаления в тёмной теме */
+body.dark-theme .btn-delete {
+    background: #ef4444 !important;
+    color: white !important;
+}
+
+body.dark-theme .btn-delete:hover {
+    background: #dc2626 !important;
+}
+
+/* Ссылки в тёмной теме */
+body.dark-theme .application-detail-page a,
+body.dark-theme .application-detail-container a {
+    color: #f97316 !important;
+}
+
+body.dark-theme .application-detail-page a:hover,
+body.dark-theme .application-detail-container a:hover {
+    color: #ea580c !important;
+}

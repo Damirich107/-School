@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}Админ-панель{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+    <h1>Админ-панель</h1>
+    <p class="admin-welcome">Добро пожаловать, {{ session.username }}!</p>
+
+    <div class="admin-stats">
+        <div class="stat-card">
+            <div class="stat-number">{{ total_users }}</div>
+            <div class="stat-label">Пользователей</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ total_applications }}</div>
+            <div class="stat-label">Всего заявок</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ new_applications }}</div>
+            <div class="stat-label">Новых заявок</div>
+        </div>
+    </div>
+
+    <div class="admin-actions">
+        <a href="/admin/applications" class="action-card">
+            <h3>Все заявки</h3>
+            <p>Просмотр и управление заявками</p>
+        </a>
+        <a href="/admin/users" class="action-card">
+            <h3>Пользователи</h3>
+            <p>Управление пользователями</p>
+        </a>
+    </div>
+
+    <div class="admin-recent">
+        <h2>Последние 10 заявок</h2>
+        {% if recent_applications %}
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Имя</th>
+                    <th>Курс</th>
+                    <th>Статус</th>
+                    <th>Дата</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for app in recent_applications %}
+                <tr>
+                    <td>{{ app.id }}</td>
+                    <td>{{ app.name }}</td>
+                    <td>{{ app.course }}</td>
+                    <td>
+                        {% if app.status == 'new' %}
+                        <span class="status-badge status-new">Новая</span>
+                        {% elif app.status == 'in_progress' %}
+                        <span class="status-badge status-in_progress">В обработке</span>
+                        {% elif app.status == 'completed' %}
+                        <span class="status-badge status-completed">Завершена</span>
+                        {% elif app.status == 'rejected' %}
+                        <span class="status-badge status-rejected">Отклонена</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ app.created_at.strftime('%d.%m.%Y') }}</td>
+                    <td><a href="/admin/application/{{ app.id }}">Просмотр</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p class="no-data">Пока нет заявок</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,248 @@
+{% extends "base.html" %}
+{% block title %}Регистрация{% endblock %}
+{% block content %}
+<div style="max-width: 500px; margin: 50px auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+    <h2>Регистрация</h2>
+
+    {% if errors %}
+    <div style="background: #ffe6e6; color: #e74c3c; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 3px solid #e74c3c;">
+        <ul style="margin: 0; padding-left: 20px;">
+            {% for error in errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <form method="POST" action="/register" id="registerForm">
+        <div style="margin-bottom: 15px;">
+            <label>Имя пользователя:</label>
+            <input type="text" name="username" id="username" required minlength="3"
+                   value="{{ username or '' }}"
+                   style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box;">
+            <div id="usernameFeedback" style="font-size: 12px; margin-top: 5px;"></div>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label>Email:</label>
+            <input type="email" name="email" id="email" required
+                   value="{{ email or '' }}"
+                   style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box;">
+            <div id="emailFeedback" style="font-size: 12px; margin-top: 5px;"></div>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label>Телефон:</label>
+            <input type="text" name="phone" id="phone" required
+                   value="{{ phone or '' }}" placeholder="+7-999-123-45-67"
+                   style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box;">
+            <div id="phoneFeedback" style="font-size: 12px; margin-top: 5px;"></div>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label>Пароль:</label>
+            <input type="password" name="password" id="password" required minlength="6"
+                   style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box;">
+            <div id="passwordFeedback" style="font-size: 12px; margin-top: 5px;"></div>
+            <div style="margin-top: 10px;">
+                <div id="passwordStrength" style="height: 5px; border-radius: 3px; transition: all 0.3s;"></div>
+                <small style="color: #666;">Минимум 6 символов, хотя бы одна буква и цифра</small>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label>Подтверждение пароля:</label>
+            <input type="password" name="confirm_password" id="confirmPassword" required minlength="6"
+                   style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box;">
+            <div id="confirmPasswordFeedback" style="font-size: 12px; margin-top: 5px;"></div>
+        </div>
+
+        <button type="submit" class="btn" style="width: 100%; background: #716e6e; border: none;">
+            Зарегистрироваться
+        </button>
+    </form>
+
+    <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;">
+        <p style="color: #666;">Уже есть аккаунт? <a href="/login" style="color: #f97316; font-weight: bold;">Войти</a></p>
+    </div>
+</div>
+
+<script>
+// Валидация на стороне клиента
+document.addEventListener('DOMContentLoaded', function() {
+    const usernameInput = document.getElementById('username');
+    const emailInput = document.getElementById('email');
+    const phoneInput = document.getElementById('phone');
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirmPassword');
+
+    // Проверка имени пользователя
+    usernameInput.addEventListener('blur', async function() {
+        const username = this.value.trim();
+        const feedback = document.getElementById('usernameFeedback');
+
+        if (username.length < 3) {
+            feedback.style.color = '#e74c3c';
+            feedback.textContent = 'Имя должно быть не менее 3 символов';
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/check_username', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({username: username})
+            });
+            const result = await response.json();
+
+            if (result.available) {
+                feedback.style.color = '#4CAF50';
+                feedback.textContent = '' + result.message;
+            } else {
+                feedback.style.color = '#e74c3c';
+                feedback.textContent = '' + result.message;
+            }
+        } catch (error) {
+            console.error('Ошибка:', error);
+        }
+    });
+
+    // Проверка email
+    emailInput.addEventListener('blur', async function() {
+        const email = this.value.trim();
+        const feedback = document.getElementById('emailFeedback');
+
+        if (!email) {
+            feedback.textContent = '';
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/validate/email', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({email: email})
+            });
+            const result = await response.json();
+
+            if (result.valid) {
+                feedback.style.color = '#4CAF50';
+                feedback.textContent = '' + result.message;
+            } else {
+                feedback.style.color = '#e74c3c';
+                feedback.textContent = '' + result.message;
+            }
+        } catch (error) {
+            console.error('Ошибка:', error);
+        }
+    });
+
+    // Проверка телефона
+    phoneInput.addEventListener('blur', async function() {
+        const phone = this.value.trim();
+        const feedback = document.getElementById('phoneFeedback');
+
+        if (!phone) {
+            feedback.textContent = '';
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/validate/phone', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({phone: phone})
+            });
+            const result = await response.json();
+
+            if (result.valid) {
+                feedback.style.color = '#4CAF50';
+                feedback.textContent = '' + result.message;
+                if (result.cleaned) {
+                    const cleaned = result.cleaned;
+                    const formatted = cleaned.replace(/^\+7(\d{3})(\d{3})(\d{2})(\d{2})$/, '+7-$1-$2-$3-$4');
+                    this.value = formatted;
+                }
+            } else {
+                feedback.style.color = '#e74c3c';
+                feedback.textContent = '' + result.message;
+            }
+        } catch (error) {
+            console.error('Ошибка:', error);
+        }
+    });
+
+    // Проверка надежности пароля
+    passwordInput.addEventListener('input', function() {
+        const password = this.value;
+        const strengthBar = document.getElementById('passwordStrength');
+        const feedback = document.getElementById('passwordFeedback');
+
+        let strength = 0;
+        let message = '';
+        let color = '';
+
+        if (password.length >= 6) strength++;
+        if (/[a-zA-Z]/.test(password)) strength++;
+        if (/\d/.test(password)) strength++;
+        if (/[!@#$%^&*]/.test(password)) strength++;
+
+        switch(strength) {
+            case 0:
+            case 1:
+                message = 'Слабый пароль';
+                color = '#e74c3c';
+                break;
+            case 2:
+                message = 'Средний пароль';
+                color = '#f39c12';
+                break;
+            case 3:
+                message = 'Хороший пароль';
+                color = '#2ecc71';
+                break;
+            case 4:
+                message = 'Отличный пароль';
+                color = '#27ae60';
+                break;
+        }
+
+        strengthBar.style.width = (strength * 25) + '%';
+        strengthBar.style.backgroundColor = color;
+
+        if (password.length > 0) {
+            feedback.style.color = color;
+            feedback.textContent = message;
+        } else {
+            feedback.textContent = '';
+        }
+    });
+
+    // Проверка совпадения паролей
+    confirmPasswordInput.addEventListener('input', function() {
+        const password = passwordInput.value;
+        const confirm = this.value;
+        const feedback = document.getElementById('confirmPasswordFeedback');
+
+        if (confirm.length === 0) {
+            feedback.textContent = '';
+        } else if (password === confirm) {
+            feedback.style.color = '#4CAF50';
+            feedback.textContent = 'Пароли совпадают';
+        } else {
+            feedback.style.color = '#e74c3c';
+            feedback.textContent = 'Пароли не совпадают';
+        }
+    });
+
+    // Маска для телефона
+    phoneInput.addEventListener('input', function(e) {
+        let value = this.value.replace(/[^\d+]/g, '');
+        if (value.length > 12) {
+            value = value.slice(0, 12);
+        }
+        this.value = value;
+    });
+});
+</script>
+{% endblock %}

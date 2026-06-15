@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шагавиев Халил</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='kkff.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .user-bar {
+            text-align: right;
+            padding: 10px 20px;
+            background: #f0f2f5;
+            border-bottom: 1px solid #eee;
+        }
+        .user-bar a {
+            color: #716e6e;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .user-bar a:hover {
+            color: #f97316;
+        }
+        /* Стили для кнопки переключения темы */
+        #themeToggle {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #716e6e;
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 1000;
+            font-size: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        #themeToggle:hover {
+            background: #f97316;
+            transform: scale(1.1);
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- БЛОК ПОЛЬЗОВАТЕЛЯ -->
+<div class="user-bar">
+    {% if session.username %}
+        <a href="/profile">{{ session.username }}</a> | <a href="/logout">Выйти</a>
+    {% else %}
+        <a href="/login">Войти</a> | <a href="/register">Регистрация</a>
+    {% endif %}
+</div>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="School" class="logo-img">
+                <h1>School</h1>
+            </div>
+            <nav>
+    <ul>
+        <li><a href="/#courses">Курсы</a></li>
+        <li><a href="/#about">О нас</a></li>
+        <li><a href="/#reviews">Отзывы</a></li>
+        <li><a href="/#contact">Контакты</a></li>
+        <li><a href="/feedback">Обратная связь</a></li>
+        {% if session.username %}
+            <li><a href="/profile">Мой профиль</a></li>
+            {% if session.is_admin %}
+                <li><a href="/admin" style="color: #f97316;">Админ-панель</a></li>
+            {% endif %}
+        {% endif %}
+        <li><a href="/my_applications">Мои заявки</a></li>
+    </ul>
+</nav>
+            <a href="/#contact" class="btn">Начать учиться</a>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- ПОДВАЛ -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="School" class="logo-img">
+    <h3>School</h3>
+    <p>Онлайн-школа программирования</p>
+</div>
+                <div class="footer-links">
+                    <h4>Быстрые ссылки</h4>
+                    <ul>
+                        <li><a href="/#courses">Курсы</a></li>
+                        <li><a href="/#about">О нас</a></li>
+                        <li><a href="/#reviews">Отзывы</a></li>
+                        <li><a href="/#contact">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-courses">
+                    <h4>Курсы</h4>
+                    <ul>
+                        <li><a href="/#courses">Веб-разработка</a></li>
+                        <li><a href="/#courses">Python</a></li>
+                        <li><a href="/#courses">Java</a></li>
+                        <li><a href="/#courses">Мобильная разработка</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025. Все права защищены.</p>
+                {% if session.visit_count %}
+                    <p>Вы посетили сайт {{ session.visit_count }} раз(а)</p>
+                {% endif %}
+            </div>
+        </div>
+    </footer>
+
+    <!-- КНОПКА ПЕРЕКЛЮЧЕНИЯ ТЕМЫ (только одна) -->
+    <button id="themeToggle"><i class="fas fa-moon"></i></button>
+
+    <!-- Подключаем общий скрипт -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+<!-- Данные текущего пользователя для JavaScript -->
+<div id="currentUser"
+     data-id="{{ session.get('user_id', '') }}"
+     data-username="{{ session.get('username', '') }}"
+     data-email="{{ session.get('email', '') }}"
+     style="display: none;">
+</div>
+</body>
+</html>

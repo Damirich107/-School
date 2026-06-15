@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Редактирование профиля{% endblock %}
+
+{% block content %}
+<div class="edit-profile-page">
+    <div class="form-container">
+        <h2>Редактирование профиля</h2>
+
+        <form method="POST">
+            <div class="form-group">
+                <label>Имя пользователя:</label>
+                <input type="text" name="username" value="{{ user.username }}" required>
+                <small>Можно изменить, но учтите — имя должно быть уникальным</small>
+            </div>
+
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" name="email" value="{{ user.email }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>О себе:</label>
+                <textarea name="bio" rows="4">{{ user.bio or '' }}</textarea>
+                <small>Расскажите немного о себе</small>
+            </div>
+
+            <div class="form-group">
+                <label>Новый пароль (оставьте пустым, если не хотите менять):</label>
+                <input type="password" name="new_password">
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-save">Сохранить изменения</button>
+                <a href="/profile" class="btn btn-cancel">Отмена</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
